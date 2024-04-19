@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ChangeEvent, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 interface User{
@@ -104,7 +105,7 @@ function App() {
     }
   }
 
-  const handleDeleteUser = async (id: number) =>{
+  const handleDeleteUser = async (id: Number) =>{
     // O url usa, após o "?", o id.
     await axios.delete(`http://localhost:8080/prods?id=${id}`);
 
@@ -161,28 +162,28 @@ function App() {
       <button onClick={handleAddOrUpdteUser}>Salvar</button>
       <button onClick={handleGetUsers}>Listar</button>
 
-      <table style={{margin: "100px 0"}}>
+      <table style={{margin: "100px 0"}} className='table table-dark'>
         <tbody>
           <tr>
             <th>ID</th>
-            <th style={{width: "500px"}}>CATEGORIA</th>
-            <th style={{width: "500px"}}>MARCA</th>
-            <th style={{width: "500px"}}>PRODUTO</th>
-            <th style={{width: "500px"}}>DESCRIÇÃO</th>
-            <th style={{width: "500px"}}>PREÇO</th>
-            <th style={{width: "500px"}}>QUANTIDADE</th>
-            <th style={{width: "500px"}}>IDcategoria</th>
-            <th style={{width: "500px"}}>IDmarca</th>
+            <th style={{width: "500px"}} scope='col'>CATEGORIA</th>
+            <th style={{width: "500px"}} scope='col'>MARCA</th>
+            <th style={{width: "500px"}} scope='col'>PRODUTO</th>
+            <th style={{width: "500px"}} scope='col'>DESCRIÇÃO</th>
+            <th style={{width: "500px"}} scope='col'>PREÇO</th>
+            <th style={{width: "500px"}} scope='col'>QUANTIDADE</th>
+            <th style={{width: "500px"}} scope='col'>IDcategoria</th>
+            <th style={{width: "500px"}} scope='col'>IDmarca</th>
           </tr>
           {users.map((user) => (
-            <tr key={user.id}>
-              <td><input type="text" value={user.id} readOnly disabled/></td>
-              <td><input type="text" value={user.cat} readOnly disabled/></td>
-              <td><input type="text" value={user.mar} readOnly disabled/></td>
-              <td><input type="text" value={user.prod} readOnly onClick={handleAddOrUpdteUser} disabled/></td>
-              <td><input type="text" value={user.descr} readOnly disabled/></td>
-              <td><input type="text" value={user.preco} readOnly disabled/></td>
-              <td><input type="text" value={user.quant} readOnly disabled/></td>
+            <tr key={user.id} className='input-group-append'>
+              <td><input type="text" className='form-control' style={{width: 50}} value={user.id} readOnly disabled/></td>
+              <td><input type="text" className='form-control' value={user.cat} readOnly disabled/></td>
+              <td><input type="text" className='form-control' value={user.mar} readOnly disabled/></td>
+              <td><input type="text" className='form-control' value={user.prod} readOnly onClick={handleAddOrUpdteUser} disabled/></td>
+              <td><input type="text" className='form-control' value={user.descr} readOnly disabled/></td>
+              <td><input type="text" className='form-control' value={user.preco} readOnly disabled/></td>
+              <td><input type="text" className='form-control' value={user.quant} readOnly disabled/></td>
               {/* <td><input type="text" value={user.idCat} readOnly disabled/></td> */}
               {/* <td><input type="text" value={user.idMar} readOnly disabled/></td> */}
               <td>
